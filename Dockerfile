@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/jcloud_s/openjdk:8-jdk-alpine
+FROM registry.cn-hangzhou.aliyuncs.com/jcloud_s/3.5.3-jdk-8-alpine
 
 # 当前项目名称
 ENV PROJECTNAME demo1
@@ -11,6 +11,8 @@ ENV LC_ALL zh_CN.utf8
 WORKDIR /usr/jcloud/$PROJECTNAME
 #copy当前执行文件至工作路径
 RUN pwd
+CMD mvn -v
+CMD mvn clean package -Dmaven.test.skip=true
 COPY ./target/*  /usr/jcloud/$PROJECTNAME/
 # docker 启动命令 如果此命令退出则docker退出
 CMD java -jar /usr/jcloud/$PROJECTNAME/$PROJECTNAME.jar
