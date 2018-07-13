@@ -1,11 +1,10 @@
 FROM registry.cn-hangzhou.aliyuncs.com/jcloud_s/openjdk:8-jdk-alpine
 
 # 当前项目名称
-env PROJECTNAME demo1
+ENV PROJECTNAME demo1
 ###设置docker时区
 ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-RUN localedef -c -f UTF-8 -i zh_CN zh_CN.utf8
 ENV LC_ALL zh_CN.utf8
 
 # 设定工作路径,如果不存在会创建
